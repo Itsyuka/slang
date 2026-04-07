@@ -1281,6 +1281,14 @@ void MetalSourceEmitter::emitSimpleTypeImpl(IRType* type)
                 m_writer->emit(" object_data");
                 m_writer->emit("*");
                 break;
+            case AddressSpace::Input:
+            case AddressSpace::BuiltinInput:
+            case AddressSpace::Output:
+            case AddressSpace::BuiltinOutput:
+            case AddressSpace::Generic:
+                m_writer->emit(" thread");
+                m_writer->emit("*");
+                break;
             default:
                 SLANG_UNEXPECTED("Unknown addressspace encountered.");
                 break;
